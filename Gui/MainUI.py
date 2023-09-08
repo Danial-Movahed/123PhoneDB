@@ -1,7 +1,7 @@
 from .include import *
-from . import SellProductEnterProductID, ui_Main, NewProductWizard, SellProductForm
+from . import SellProductEnterProductCode, ui_Main, NewProductWizard, SellProductForm
 
-class MainUI(QMainWindow, ui_Main.Ui_MainWindow):
+class MainUI(ui_Main.Ui_MainWindow, QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
@@ -13,8 +13,8 @@ class MainUI(QMainWindow, ui_Main.Ui_MainWindow):
         self.AddProductWizard = NewProductWizard.NewProductWizard()
 
     def SellProduct(self) -> None:
-        self.SellProductEnterProductID = SellProductEnterProductID.SellProductEnterProductID()
-        self.SellProductEnterProductID.closeEvent = self.OpenSellProductForm
+        self.SellProductEnterProductCode = SellProductEnterProductCode.SellProductEnterProductCode()
+        self.SellProductEnterProductCode.closeEvent = self.OpenSellProductForm
 
     def OpenSellProductForm(self) -> None:
-        self.SellProductForm = SellProductForm.SellProductForm()
+        self.SellProductForm = SellProductForm.SellProductForm(self.SellProductEnterProductCode.ProductCodeEdit.text())
