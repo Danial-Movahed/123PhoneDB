@@ -40,7 +40,8 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 0, 4);
-border-radius: 20px;</string>
+border-radius: 20px;
+padding: 20px;</string>
       </property>
       <property name="text">
        <string>فرم فروش محصول</string>
@@ -49,7 +50,7 @@ border-radius: 20px;</string>
        <set>Qt::AlignCenter</set>
       </property>
       <property name="margin">
-       <number>17</number>
+       <number>0</number>
       </property>
      </widget>
     </item>

@@ -28,7 +28,8 @@ class Ui_MainWindow(object):
         self.label_12.setFont(font)
         self.label_12.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_12.setStyleSheet("background-color: rgb(255, 0, 4);\n"
-"border-radius: 20px;")
+"border-radius: 20px;\n"
+"padding: 20px;")
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
         self.verticalLayout.addWidget(self.label_12)

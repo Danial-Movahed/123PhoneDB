@@ -1,5 +1,5 @@
 from .include import *
-from . import SellProductEnterProductCode, ui_Main, NewProductWizard, SellProductForm
+from . import SellProductEnterProductCode, ui_Main, NewProductWizard, SellProductSerialCheck
 
 class MainUI(ui_Main.Ui_MainWindow, QMainWindow):
     def __init__(self) -> None:
@@ -16,5 +16,6 @@ class MainUI(ui_Main.Ui_MainWindow, QMainWindow):
         self.SellProductEnterProductCode = SellProductEnterProductCode.SellProductEnterProductCode()
         self.SellProductEnterProductCode.closeEvent = self.OpenSellProductForm
 
-    def OpenSellProductForm(self) -> None:
-        self.SellProductForm = SellProductForm.SellProductForm(self.SellProductEnterProductCode.ProductCodeEdit.text())
+    def OpenSellProductForm(self, event) -> None:
+        if self.SellProductEnterProductCode.state:
+            self.SellProductSerialCheck = SellProductSerialCheck.SellProductSerialCheck(self.SellProductEnterProductCode.ProductCodeEdit.text())
