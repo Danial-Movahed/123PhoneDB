@@ -359,7 +359,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "جادوگر ورود محصول"))
         self.label_12.setText(_translate("MainWindow", "فرم ورود محصولات به انبار"))
         self.PhoneBtn.setText(_translate("MainWindow", "گوشی موبایل"))
         self.TabletBtn.setText(_translate("MainWindow", "تبلت و کتابخوان"))
