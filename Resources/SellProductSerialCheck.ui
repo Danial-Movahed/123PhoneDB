@@ -59,7 +59,7 @@ padding: 20px;</string>
        </font>
       </property>
       <property name="text">
-       <string>Error</string>
+       <string>هیچ محصولی پیدا نشد</string>
       </property>
      </widget>
     </item>
@@ -93,7 +93,7 @@ padding: 20px;</string>
      </layout>
     </item>
     <item>
-     <widget class="QListWidget" name="IMEIList">
+     <widget class="QListWidget" name="ProductSerialList">
       <property name="font">
        <font>
         <pointsize>15</pointsize>

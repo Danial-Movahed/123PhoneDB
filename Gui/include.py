@@ -1,7 +1,6 @@
 from enum import unique
 from hashlib import blake2s
 from sqlite3 import Date
-from numpy import unicode_
 from sqlalchemy import Column, Boolean, String, create_engine, MetaData, Table, Integer, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -10,10 +9,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtMultimedia import *
 from PyQt5.QtMultimediaWidgets import *
-import socket
-import threading
-import select
-import pickle
+from persiantools.jdatetime import JalaliDate
 
 class CDialog(QDialog):
     def __init__(self, label, Title, parent=None):
@@ -55,19 +51,20 @@ class Product(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     BuyFactorCode = Column(String)
     BuyFactorDate = Column(String)
-    ProductType = Column(String)
-    ProductBrand = Column(String)
-    ProductModel = Column(String)
-    ProductStorageRam = Column(String)
-    ProductCountry = Column(String)
-    ProductColor = Column(String)
-    ProductWarrantyCompany = Column(String)
-    ProductWarrantyTime = Column(Integer)
-    ProductSerial = Column(String, unique=True)
-    ProductBuyPrice = Column(String)
-    ProductCode = Column(String)
+    Type = Column(String)
+    Brand = Column(String)
+    Model = Column(String)
+    StorageRam = Column(String)
+    Country = Column(String)
+    Color = Column(String)
+    WarrantyCompany = Column(String)
+    WarrantyTime = Column(Integer)
+    Serial = Column(String, unique=True)
+    BuyPrice = Column(String)
+    Code = Column(String)
+    isSold = Column(Boolean)
 
-class LogTable(Base):
+class Log(Base):
     __tablename__ = "Logs"
     id = Column(Integer, primary_key=True, autoincrement=True)
     OrderCode = Column(String)

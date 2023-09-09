@@ -18,4 +18,4 @@ class MainUI(ui_Main.Ui_MainWindow, QMainWindow):
 
     def OpenSellProductForm(self, event) -> None:
         if self.SellProductEnterProductCode.state:
-            self.SellProductSerialCheck = SellProductSerialCheck.SellProductSerialCheck(self.SellProductEnterProductCode.ProductCodeEdit.text())
+            self.SellProductSerialCheck = SellProductSerialCheck.SellProductSerialCheck(self.SellProductEnterProductCode.ProductCodeEdit.text().strip())

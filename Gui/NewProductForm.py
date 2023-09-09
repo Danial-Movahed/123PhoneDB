@@ -1,31 +1,50 @@
 from .include import *
 from . import ui_NewProductForm
-from persiantools.jdatetime import JalaliDate
 import datetime
 
 class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
-    def __init__(self, insertQuery: "InsertQuery") -> None:
+    def __init__(self, insertQuery) -> None:
         super().__init__()
         self.setupUi(self)
         self.InsertQuery = insertQuery
-        self.ProductTypeEdit.setText(insertQuery.Type)
-        self.ProductBrandEdit.setText(insertQuery.Brand)
-        self.ProductModelEdit.setText(insertQuery.Model)
-        self.ProductStorageRamEdit.setText(insertQuery.StorageRam)
-        self.ProductCountryEdit.setText(insertQuery.Country)
-        self.ProductColorEdit.setText(insertQuery.Color)
-        self.ProductWarrantyCompanyEdit.setText(insertQuery.WarrantyCompany)
-        self.SetProductCode()
+        self.SetValues()
         self.CancelBtn.clicked.connect(lambda: self.close())
         self.ContinueBtn.clicked.connect(lambda: self.Save())
+        self.show()
+
+    def SetValues(self):
+        self.ProductTypeEdit.setText(self.InsertQuery.Type)
+        self.ProductBrandEdit.setText(self.InsertQuery.Brand)
+        self.ProductModelEdit.setText(self.InsertQuery.Model)
+        self.ProductStorageRamEdit.setText(self.InsertQuery.StorageRam)
+        self.ProductCountryEdit.setText(self.InsertQuery.Country)
+        self.ProductColorEdit.setText(self.InsertQuery.Color)
+        self.ProductWarrantyCompanyEdit.setText(self.InsertQuery.WarrantyCompany)
+        self.SetProductCode()
+        self.SetTodayDate()
+
+    def SetTodayDate(self):
         today = JalaliDate.today()
         self.BuyFactorDateYearSpin.setValue(today.year)
         self.BuyFactorDateMonthSpin.setValue(today.month)
         self.BuyFactorDateDaySpin.setValue(today.day)
-        self.show()
 
     def Check(self):
-        if self.BuyFactorCodeEdit.text() != "" and self.BuyFactorDateYearSpin.text() != "" and self.ProductTypeEdit.text() != "" and self.ProductBrandEdit.text() != "" and self.ProductModelEdit.text() != "" and self.ProductStorageRamEdit.text() != "" and self.ProductCountryEdit.text() != "" and self.ProductColorEdit.text() != "" and self.ProductWarrantyCompanyEdit.text() != "" and self.ProductWarrantyTimeSpin.text() != "" and self.ProductSerialEdit.text() != "" and self.ProductBuyPriceEdit.text() != "" and self.ProductCodeEdit.text() != "":
+        if (
+            self.BuyFactorCodeEdit.text().strip() != ""          and
+            self.BuyFactorDateYearSpin.text().strip() != ""      and
+            self.ProductTypeEdit.text().strip() != ""            and
+            self.ProductBrandEdit.text().strip() != ""           and
+            self.ProductModelEdit.text().strip() != ""           and
+            self.ProductStorageRamEdit.text().strip() != ""      and
+            self.ProductCountryEdit.text().strip() != ""         and
+            self.ProductColorEdit.text().strip() != ""           and
+            self.ProductWarrantyCompanyEdit.text().strip() != "" and
+            self.ProductWarrantyTimeSpin.text().strip() != ""    and
+            self.ProductSerialEdit.text().strip() != ""          and
+            self.ProductBuyPriceEdit.text().strip() != ""        and
+            self.ProductCodeEdit.text().strip() != ""
+            ):
             return True
         return False
     
@@ -35,31 +54,31 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             self.dlg.show()
             return
         session.add(Product(
-            BuyFactorCode = self.BuyFactorCodeEdit.text(),
-            BuyFactorDate = self.BuyFactorDateYearSpin.text()+"/"+self.BuyFactorDateMonthSpin.text()+"/"+self.BuyFactorDateDaySpin.text(),
-            ProductType = self.ProductTypeEdit.text(),
-            ProductBrand = self.ProductBrandEdit.text(),
-            ProductModel = self.ProductModelEdit.text(),
-            ProductStorageRam = self.ProductStorageRamEdit.text(),
-            ProductCountry = self.ProductCountryEdit.text(),
-            ProductColor = self.ProductColorEdit.text(),
-            ProductWarrantyCompany = self.ProductWarrantyCompanyEdit.text(),
-            ProductWarrantyTime = self.ProductWarrantyTimeSpin.text(),
-            ProductSerial = self.ProductSerialEdit.text(),
-            ProductBuyPrice = self.ProductBuyPriceEdit.text(),
-            ProductCode = self.ProductCodeEdit.text()
+            BuyFactorCode = self.BuyFactorCodeEdit.text().strip(),
+            BuyFactorDate = self.BuyFactorDateYearSpin.text().strip()+"/"+self.BuyFactorDateMonthSpin.text().strip()+"/"+self.BuyFactorDateDaySpin.text().strip(),
+            Type = self.ProductTypeEdit.text().strip(),
+            Brand = self.ProductBrandEdit.text().strip(),
+            Model = self.ProductModelEdit.text().strip(),
+            StorageRam = self.ProductStorageRamEdit.text().strip(),
+            Country = self.ProductCountryEdit.text().strip(),
+            Color = self.ProductColorEdit.text().strip(),
+            WarrantyCompany = self.ProductWarrantyCompanyEdit.text().strip(),
+            WarrantyTime = self.ProductWarrantyTimeSpin.text().strip(),
+            Serial = self.ProductSerialEdit.text().strip(),
+            BuyPrice = self.ProductBuyPriceEdit.text().strip(),
+            Code = self.ProductCodeEdit.text().strip()
         ))
         session.commit()
         self.close()
 
     def SetProductCode(self):
-        for x in session.query(Product.ProductCode.distinct()).filter(
-            (Product.ProductType == self.InsertQuery.Type),
-            (Product.ProductBrand == self.InsertQuery.Brand),
-            (Product.ProductModel == self.InsertQuery.Model),
-            (Product.ProductStorageRam == self.InsertQuery.StorageRam),
-            (Product.ProductCountry == self.InsertQuery.Country),
-            (Product.ProductColor == self.InsertQuery.Color),
-            (Product.ProductWarrantyCompany == self.InsertQuery.WarrantyCompany)
+        for x in session.query(Product.Code.distinct()).filter(
+            (Product.Type == self.InsertQuery.Type),
+            (Product.Brand == self.InsertQuery.Brand),
+            (Product.Model == self.InsertQuery.Model),
+            (Product.StorageRam == self.InsertQuery.StorageRam),
+            (Product.Country == self.InsertQuery.Country),
+            (Product.Color == self.InsertQuery.Color),
+            (Product.WarrantyCompany == self.InsertQuery.WarrantyCompany)
         ):
             self.ProductCodeEdit.setText(x[0])
