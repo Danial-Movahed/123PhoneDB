@@ -3,6 +3,8 @@ from hashlib import blake2s
 from sqlite3 import Date
 from numpy import unicode_
 from sqlalchemy import Column, Boolean, String, create_engine, MetaData, Table, Integer, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -47,34 +49,36 @@ class ErrorDialog(QDialog):
 
 
 engine = create_engine('sqlite:///Database.db', echo = False)
-meta = MetaData()
-ProductsTable = Table(
-    'Products', meta, 
-    Column('BuyFactorCode', String), 
-    Column('BuyFactorDate', Date),
-    Column('ProductType', String),
-    Column('ProductBrand', String),
-    Column('ProductModel', String),
-    Column('ProductStorageRam', String),
-    Column('ProductCountry', String),
-    Column('ProductColor', String),
-    Column('ProductWarrantyCompany', String),
-    Column('ProductWarrantyTime', Integer),
-    Column('ProductSerial', String, unique=True),
-    Column('ProductBuyPrice', String),
-    Column('ProductCode', String)
-)
-LogTable = Table(
-    'Logs', meta, 
-    Column("OrderCode", String),
-    Column("OrderDate", Date),
-    Column("OrdererName", String),
-    Column("OrdererNationalCode", String),
-    Column("OrderSendType", String),
-    Column("OrderRefCode", String),
-    Column('ProductSerial', String, unique=True),
-    Column("ProductSellPrice", String),
-    Column("ProductCode", String)
-)
-meta.create_all(engine)
-DBConnection = engine.connect()
+Base = declarative_base()
+class ProductsTable(Base):
+    __tablename__ = "Products"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    BuyFactorCode = Column(String)
+    BuyFactorDate = Column(String)
+    ProductType = Column(String)
+    ProductBrand = Column(String)
+    ProductModel = Column(String)
+    ProductStorageRam = Column(String)
+    ProductCountry = Column(String)
+    ProductColor = Column(String)
+    ProductWarrantyCompany = Column(String)
+    ProductWarrantyTime = Column(Integer)
+    ProductSerial = Column(String, unique=True)
+    ProductBuyPrice = Column(String)
+    ProductCode = Column(String)
+
+class LogTable(Base):
+    __tablename__ = "Logs"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    OrderCode = Column(String)
+    OrderDate = Column(String)
+    OrdererName = Column(String)
+    OrdererNationalCode = Column(String)
+    OrderSendType = Column(String)
+    OrderRefCode = Column(String)
+    ProductSerial = Column(String, unique=True)
+    ProductSellPrice = Column(String)
+    ProductCode = Column(String)
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind = engine)
+session = Session()

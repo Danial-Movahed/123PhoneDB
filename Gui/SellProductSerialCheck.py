@@ -1,7 +1,7 @@
 from .include import *
 from . import ui_SellProductSerialCheck
 
-class SellProductSerialCheck(QMainWindow, ui_SellProductSerialCheck.Ui_MainWindow):
+class SellProductSerialCheck(ui_SellProductSerialCheck.Ui_MainWindow, QMainWindow):
     def __init__(self, ProductCode) -> None:
         super().__init__()
         self.ProductCode = ProductCode

@@ -54,7 +54,7 @@ border-radius: 20px;</string>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>6</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="TypePage">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -267,7 +267,7 @@ border-radius: 20px;</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="StRamPage">
+      <widget class="QWidget" name="StorageRamPage">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -499,7 +499,7 @@ border-radius: 20px;</string>
        <number>23</number>
       </property>
       <item>
-       <widget class="QPushButton" name="BeforeBtn">
+       <widget class="QPushButton" name="BackBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>

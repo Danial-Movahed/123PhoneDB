@@ -1,7 +1,7 @@
 from .include import *
 from . import ui_SellProductForm
 
-class SellProductForm(QMainWindow, ui_SellProductForm.Ui_MainWindow):
+class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
     def __init__(self, ProductCode) -> None:
         super().__init__()
         self.ProductCode = ProductCode
