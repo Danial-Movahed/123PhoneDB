@@ -1,5 +1,7 @@
 from .include import *
 from . import ui_NewProductForm
+from persiantools.jdatetime import JalaliDate
+import datetime
 
 class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
     def __init__(self, insertQuery: "InsertQuery") -> None:
@@ -16,6 +18,10 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
         self.SetProductCode()
         self.CancelBtn.clicked.connect(lambda: self.close())
         self.ContinueBtn.clicked.connect(lambda: self.Save())
+        today = JalaliDate.today()
+        self.BuyFactorDateYearSpin.setValue(today.year)
+        self.BuyFactorDateMonthSpin.setValue(today.month)
+        self.BuyFactorDateDaySpin.setValue(today.day)
         self.show()
 
     def Check(self):
@@ -25,7 +31,8 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
     
     def Save(self):
         if not self.Check():
-            print("Error")
+            self.dlg = ErrorDialog("لطفا همه بخش‌ها را پر کنید!", self)
+            self.dlg.show()
             return
         session.add(Product(
             BuyFactorCode = self.BuyFactorCodeEdit.text(),

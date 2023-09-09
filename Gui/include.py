@@ -35,7 +35,7 @@ class ErrorDialog(QDialog):
     def __init__(self, label, parent=None):
         super().__init__(parent)
 
-        self.setWindowTitle("Error!")
+        self.setWindowTitle("خطا!")
 
         QBtn = QDialogButtonBox.Ok
 
