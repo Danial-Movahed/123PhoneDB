@@ -74,8 +74,8 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             OrdererNationalCode = self.OrdererNationalCodeEdit.text().strip(),
             OrderSendType = self.OrderSendTypeEdit.text().strip(),
             OrderRefCode = self.OrderRefCodeEdit.text().strip(),
-            ProductSerial = self.ProductSerialEdit.text().strip(),
-            ProductSellPrice = self.ProductSellPriceEdit.text().strip(),
+            Serial = self.ProductSerialEdit.text().strip(),
+            SellPrice = self.ProductSellPriceEdit.text().strip(),
             ProductCode = self.ProductCodeEdit.text().strip()
         ))
         self.Product.isSold = True

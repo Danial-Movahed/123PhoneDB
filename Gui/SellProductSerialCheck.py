@@ -21,7 +21,7 @@ class SellProductSerialCheck(ui_SellProductSerialCheck.Ui_MainWindow, QMainWindo
     
     def SearchSerial(self):
         self.ProductSerialList.clear()
-        for x in session.query(Product).filter((self.ProductSerialEdit.text().strip() == "") or (Product.Serial == self.ProductSerialEdit.text().strip())):
+        for x in session.query(Product).filter(((self.ProductSerialEdit.text().strip() == "") or (Product.Serial == self.ProductSerialEdit.text().strip())) and (Product.Code == self.ProductCode)):
             if x.isSold:
                 continue
             self.ProductSerialList.addItem(x.Serial)
