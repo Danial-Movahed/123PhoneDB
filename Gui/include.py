@@ -50,7 +50,7 @@ class ErrorDialog(QDialog):
 
 engine = create_engine('sqlite:///Database.db', echo = False)
 Base = declarative_base()
-class ProductsTable(Base):
+class Product(Base):
     __tablename__ = "Products"
     id = Column(Integer, primary_key=True, autoincrement=True)
     BuyFactorCode = Column(String)

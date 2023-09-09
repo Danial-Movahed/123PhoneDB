@@ -93,6 +93,13 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
         self.WatchBtn.clicked.connect(lambda: self.SelectType("Watch"))
         self.HandsfreeBtn.clicked.connect(lambda: self.SelectType("Handsfree"))
         self.OtherBtn.clicked.connect(lambda: self.SelectType("Other"))
+        # New btns
+        self.NewBrandBtn.clicked.connect(lambda: self.OpenForm())
+        self.NewModelBtn.clicked.connect(lambda: self.OpenForm())
+        self.NewStorageRamBtn.clicked.connect(lambda: self.OpenForm())
+        self.NewCountryBtn.clicked.connect(lambda: self.OpenForm())
+        self.NewColorBtn.clicked.connect(lambda: self.OpenForm())
+        self.NewWarrantyCompanyBtn.clicked.connect(lambda: self.OpenForm())
         self.show()
     
     def LastPage(self):
@@ -110,31 +117,31 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
         column = None
         if self.stackedWidget.currentIndex() + 1 == 1:
             # Brand
-            column = ProductsTable.ProductBrand.distinct()
+            column = Product.ProductBrand.distinct()
             self.currentListWidget = self.BrandList
         elif self.stackedWidget.currentIndex() + 1 == 2:
             # Model
-            column = ProductsTable.ProductModel.distinct()
+            column = Product.ProductModel.distinct()
             self.QueryCareTaker.SetBrand(self.currentListWidget.currentItem().text())
             self.currentListWidget = self.ModelList
         elif self.stackedWidget.currentIndex() + 1 == 3:
             # Storage Ram
-            column = ProductsTable.ProductStorageRam.distinct()
+            column = Product.ProductStorageRam.distinct()
             self.QueryCareTaker.SetModel(self.currentListWidget.currentItem().text())
             self.currentListWidget = self.StorageRamList
         elif self.stackedWidget.currentIndex() + 1 == 4:
             # Country
-            column = ProductsTable.ProductCountry.distinct()
+            column = Product.ProductCountry.distinct()
             self.QueryCareTaker.SetStorageRam(self.currentListWidget.currentItem().text())
             self.currentListWidget = self.CountryList
         elif self.stackedWidget.currentIndex() + 1 == 5:
             # Color
-            column = ProductsTable.ProductColor.distinct()
+            column = Product.ProductColor.distinct()
             self.QueryCareTaker.SetCountry(self.currentListWidget.currentItem().text())
             self.currentListWidget = self.ColorList
         elif self.stackedWidget.currentIndex() + 1 == 6:
             # Warranty
-            column = ProductsTable.ProductWarrantyCompany.distinct()
+            column = Product.ProductWarrantyCompany.distinct()
             self.QueryCareTaker.SetColor(self.currentListWidget.currentItem().text())
             self.currentListWidget = self.WarrantyList
         else:
@@ -144,13 +151,13 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
         self.currentListWidget.clear()
         for x in session.query(column).filter(
-            ((self.InsertQuery.Type == None) or (ProductsTable.ProductType == self.InsertQuery.Type)),
-            ((self.InsertQuery.Brand == None) or (ProductsTable.ProductBrand == self.InsertQuery.Brand)),
-            ((self.InsertQuery.Model == None) or (ProductsTable.ProductModel == self.InsertQuery.Model)),
-            ((self.InsertQuery.StorageRam == None) or (ProductsTable.ProductStorageRam == self.InsertQuery.StorageRam)),
-            ((self.InsertQuery.Country == None) or (ProductsTable.ProductCountry == self.InsertQuery.Country)),
-            ((self.InsertQuery.Color == None) or (ProductsTable.ProductColor == self.InsertQuery.Color)),
-            ((self.InsertQuery.WarrantyCompany == None) or (ProductsTable.ProductWarrantyCompany == self.InsertQuery.WarrantyCompany))
+            ((self.InsertQuery.Type == None) or (Product.ProductType == self.InsertQuery.Type)),
+            ((self.InsertQuery.Brand == None) or (Product.ProductBrand == self.InsertQuery.Brand)),
+            ((self.InsertQuery.Model == None) or (Product.ProductModel == self.InsertQuery.Model)),
+            ((self.InsertQuery.StorageRam == None) or (Product.ProductStorageRam == self.InsertQuery.StorageRam)),
+            ((self.InsertQuery.Country == None) or (Product.ProductCountry == self.InsertQuery.Country)),
+            ((self.InsertQuery.Color == None) or (Product.ProductColor == self.InsertQuery.Color)),
+            ((self.InsertQuery.WarrantyCompany == None) or (Product.ProductWarrantyCompany == self.InsertQuery.WarrantyCompany))
         ):
                 self.currentListWidget.addItem(x[0])
         

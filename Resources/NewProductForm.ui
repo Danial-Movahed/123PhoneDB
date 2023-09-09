@@ -80,7 +80,7 @@ padding: 20px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="BuyDateYearSpin">
+           <widget class="QSpinBox" name="BuyFactorDateYearSpin">
             <property name="minimum">
              <number>1400</number>
             </property>
@@ -110,7 +110,7 @@ padding: 20px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="BuyDateMonthSpin">
+           <widget class="QSpinBox" name="BuyFactorDateMonthSpin">
             <property name="minimum">
              <number>1</number>
             </property>
@@ -140,7 +140,7 @@ padding: 20px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="BuyDateDaySpin">
+           <widget class="QSpinBox" name="BuyFactorDateDaySpin">
             <property name="minimum">
              <number>1</number>
             </property>
@@ -199,7 +199,7 @@ padding: 20px;</string>
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="BuyPriceEdit">
+       <widget class="QLineEdit" name="BuyFactorCodeEdit">
         <property name="font">
          <font>
           <family>Trebuchet MS</family>
