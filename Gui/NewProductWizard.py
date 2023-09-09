@@ -139,6 +139,7 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
             self.currentListWidget = self.WarrantyList
         else:
             self.QueryCareTaker.SetWarrantyCompany(self.currentListWidget.currentItem().text())
+            self.OpenForm()
 
         self.stackedWidget.setCurrentIndex(self.stackedWidget.currentIndex() + 1)
         self.currentListWidget.clear()
@@ -153,6 +154,10 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
         ):
                 self.currentListWidget.addItem(x[0])
         
+    def OpenForm(self):
+        self.wnd = NewProductForm.NewProductForm(self.InsertQuery)
+        self.close()
+
     def SelectType(self, type):
         self.QueryCareTaker.SetType(type)
         self.NextBtn.setVisible(True)

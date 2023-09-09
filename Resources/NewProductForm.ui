@@ -202,12 +202,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="BuyPriceEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -238,12 +241,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductTypeEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -274,12 +280,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductModelEdit">
         <property name="font">
          <font>
-          <family>Noto Sans</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -306,12 +315,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductBrandEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -342,12 +354,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductStorageRamEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -378,12 +393,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductColorEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -410,12 +428,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductCountryEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -469,12 +490,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductWarrantyCompanyEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -505,12 +529,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductSerialEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -541,12 +568,15 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductBuyPriceEdit">
         <property name="font">
          <font>
-          <family>B Nazanin</family>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -577,8 +607,12 @@ padding: 20px;</string>
        <widget class="QLineEdit" name="ProductCodeEdit">
         <property name="font">
          <font>
+          <family>Trebuchet MS</family>
           <pointsize>15</pointsize>
          </font>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
