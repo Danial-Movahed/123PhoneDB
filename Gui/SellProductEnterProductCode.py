@@ -10,5 +10,9 @@ class SellProductEnterProductCode(ui_SellProductEnterProductCode.Ui_Dialog, QDia
         self.show()
 
     def StateCheck(self):
+        if self.ProductCodeEdit.text().strip() == "":
+            self.dlg = ErrorDialog("لطفا کد محصول را وارد کنید!", self)
+            self.dlg.show()
+            return
         self.state = True
         self.close()

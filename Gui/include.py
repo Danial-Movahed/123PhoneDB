@@ -50,7 +50,7 @@ class Product(Base):
     __tablename__ = "Products"
     id = Column(Integer, primary_key=True, autoincrement=True)
     BuyFactorCode = Column(String)
-    BuyFactorDate = Column(String)
+    BuyFactorDate = Column(Date)
     Type = Column(String)
     Brand = Column(String)
     Model = Column(String)
@@ -62,7 +62,7 @@ class Product(Base):
     Serial = Column(String, unique=True)
     BuyPrice = Column(String)
     Code = Column(String)
-    isSold = Column(Boolean)
+    isAvailable = Column(Boolean)
 
 class Log(Base):
     __tablename__ = "Logs"

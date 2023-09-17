@@ -55,7 +55,7 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             return
         session.add(Product(
             BuyFactorCode = self.BuyFactorCodeEdit.text().strip(),
-            BuyFactorDate = self.BuyFactorDateYearSpin.text().strip()+"/"+self.BuyFactorDateMonthSpin.text().strip()+"/"+self.BuyFactorDateDaySpin.text().strip(),
+            BuyFactorDate = JalaliDate(int(self.BuyFactorDateYearSpin.text().strip()),int(self.BuyFactorDateMonthSpin.text().strip()),int(self.BuyFactorDateDaySpin.text().strip())).to_gregorian(),
             Type = self.ProductTypeEdit.text().strip(),
             Brand = self.ProductBrandEdit.text().strip(),
             Model = self.ProductModelEdit.text().strip(),
@@ -66,7 +66,8 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             WarrantyTime = self.ProductWarrantyTimeSpin.text().strip(),
             Serial = self.ProductSerialEdit.text().strip(),
             BuyPrice = self.ProductBuyPriceEdit.text().strip(),
-            Code = self.ProductCodeEdit.text().strip()
+            Code = self.ProductCodeEdit.text().strip(),
+            isAvailable = True
         ))
         session.commit()
         self.close()

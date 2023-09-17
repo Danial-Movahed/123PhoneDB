@@ -69,7 +69,7 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             return
         session.add(Log(
             OrderCode = self.OrderCodeEdit.text().strip(),
-            OrderDate = self.OrderDateYearSpin.text().strip()+"/"+self.OrderDateMonthSpin.text().strip()+"/"+self.OrderDateDaySpin.text().strip(),
+            OrderDate = JalaliDate(int(self.BuyFactorDateYearSpin.text().strip()),int(self.BuyFactorDateMonthSpin.text().strip()),int(self.BuyFactorDateDaySpin.text().strip())).to_gregorian(),
             OrdererName = self.OrdererNameEdit.text().strip(),
             OrdererNationalCode = self.OrdererNationalCodeEdit.text().strip(),
             OrderSendType = self.OrderSendTypeEdit.text().strip(),
@@ -78,6 +78,6 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             SellPrice = self.ProductSellPriceEdit.text().strip(),
             ProductCode = self.ProductCodeEdit.text().strip()
         ))
-        self.Product.isSold = True
+        self.Product.isAvailable = False
         session.commit()
         self.close()
