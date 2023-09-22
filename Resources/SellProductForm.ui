@@ -253,7 +253,7 @@ padding: 20px;</string>
          <enum>Qt::RightToLeft</enum>
         </property>
         <property name="text">
-         <string>کد ملی خریدار:</string>
+         <string>کدملی خریدار:</string>
         </property>
        </widget>
       </item>
@@ -614,7 +614,7 @@ padding: 20px;</string>
          <enum>Qt::RightToLeft</enum>
         </property>
         <property name="text">
-         <string>شرکت گارانتی کننده: </string>
+         <string>شرکت گارانتی‌کننده: </string>
         </property>
        </widget>
       </item>
@@ -780,7 +780,7 @@ background-color: rgb(0, 117, 14);</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>34</height>
     </rect>
    </property>
   </widget>
