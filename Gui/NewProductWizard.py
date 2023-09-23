@@ -156,7 +156,8 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
     def NextPage(self):
         if self.stackedWidget.currentIndex() != 0:
             if len(self.currentListWidget.selectedItems()) < 1:
-                print("Please select an item")
+                self.errDlg = ErrorDialog("لطفا یک گزینه را انتخاب کنید!")
+                self.errDlg.show()
                 return
             
         if self.stackedWidget.currentIndex() == 1:
