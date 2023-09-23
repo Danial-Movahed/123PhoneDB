@@ -72,12 +72,15 @@ padding: 20px;</string>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_12">
       <item>
-       <widget class="QTreeWidget" name="ShowTable">
+       <widget class="QTableWidget" name="ShowTable">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>35</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
         </property>
         <column>
          <property name="text">
@@ -352,7 +355,7 @@ padding: 20px;</string>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_11">
             <item>
-             <widget class="QLineEdit" name="PriceTo">
+             <widget class="QLineEdit" name="BuyPriceTo">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -399,7 +402,7 @@ padding: 20px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="PriceFrom">
+             <widget class="QLineEdit" name="BuyPriceFrom">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -417,6 +420,9 @@ padding: 20px;</string>
                 <width>16777215</width>
                 <height>16777215</height>
                </size>
+              </property>
+              <property name="inputMask">
+               <string/>
               </property>
              </widget>
             </item>
@@ -480,6 +486,9 @@ padding: 20px;</string>
           </property>
           <property name="text">
            <string>موجود است؟</string>
+          </property>
+          <property name="tristate">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

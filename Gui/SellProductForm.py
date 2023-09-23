@@ -67,15 +67,22 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             self.dlg = ErrorDialog("لطفا همه بخش‌ها را پر کنید!", self)
             self.dlg.show()
             return
+        price = 0
+        try:
+            price = int(self.ProductSellPriceEdit.text().strip())
+        except:
+            self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
+            self.dlg.show()
+            return
         session.add(Log(
             OrderCode = self.OrderCodeEdit.text().strip(),
-            OrderDate = JalaliDate(int(self.BuyFactorDateYearSpin.text().strip()),int(self.BuyFactorDateMonthSpin.text().strip()),int(self.BuyFactorDateDaySpin.text().strip())).to_gregorian(),
+            OrderDate = JalaliDate(self.OrderDateYearSpin.value(),self.OrderDateMonthSpin.value(),self.OrderDateDaySpin.value()).to_gregorian(),
             OrdererName = self.OrdererNameEdit.text().strip(),
             OrdererNationalCode = self.OrdererNationalCodeEdit.text().strip(),
             OrderSendType = self.OrderSendTypeEdit.text().strip(),
             OrderRefCode = self.OrderRefCodeEdit.text().strip(),
             Serial = self.ProductSerialEdit.text().strip(),
-            SellPrice = self.ProductSellPriceEdit.text().strip(),
+            SellPrice = price,
             ProductCode = self.ProductCodeEdit.text().strip()
         ))
         self.Product.isAvailable = False

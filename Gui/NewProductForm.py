@@ -53,9 +53,16 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             self.dlg = ErrorDialog("لطفا همه بخش‌ها را پر کنید!", self)
             self.dlg.show()
             return
+        price = 0
+        try:
+            price = int(self.ProductBuyPriceEdit.text().strip())
+        except:
+            self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
+            self.dlg.show()
+            return 
         session.add(Product(
             BuyFactorCode = self.BuyFactorCodeEdit.text().strip(),
-            BuyFactorDate = JalaliDate(int(self.BuyFactorDateYearSpin.text().strip()),int(self.BuyFactorDateMonthSpin.text().strip()),int(self.BuyFactorDateDaySpin.text().strip())).to_gregorian(),
+            BuyFactorDate = JalaliDate(self.BuyFactorDateYearSpin.value(),self.BuyFactorDateMonthSpin.value(),self.BuyFactorDateDaySpin.value()).to_gregorian(),
             Type = self.ProductTypeEdit.text().strip(),
             Brand = self.ProductBrandEdit.text().strip(),
             Model = self.ProductModelEdit.text().strip(),
@@ -65,7 +72,7 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             WarrantyCompany = self.ProductWarrantyCompanyEdit.text().strip(),
             WarrantyTime = self.ProductWarrantyTimeSpin.text().strip(),
             Serial = self.ProductSerialEdit.text().strip(),
-            BuyPrice = self.ProductBuyPriceEdit.text().strip(),
+            BuyPrice = price,
             Code = self.ProductCodeEdit.text().strip(),
             isAvailable = True
         ))

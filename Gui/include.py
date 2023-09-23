@@ -1,9 +1,9 @@
 from enum import unique
 from hashlib import blake2s
 from sqlite3 import Date
-from sqlalchemy import Column, Boolean, String, create_engine, MetaData, Table, Integer, Date
+from sqlalchemy import Column, Boolean, String, create_engine, Integer, Date, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, relationship, Mapped
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -60,22 +60,25 @@ class Product(Base):
     WarrantyCompany = Column(String)
     WarrantyTime = Column(Integer)
     Serial = Column(String, unique=True)
-    BuyPrice = Column(String)
+    BuyPrice = Column(Integer)
     Code = Column(String)
     isAvailable = Column(Boolean)
+    log: Mapped["Log"] = relationship("Log", back_populates="product")
 
 class Log(Base):
     __tablename__ = "Logs"
     id = Column(Integer, primary_key=True, autoincrement=True)
     OrderCode = Column(String)
-    OrderDate = Column(String)
+    OrderDate = Column(Date)
     OrdererName = Column(String)
     OrdererNationalCode = Column(String)
     OrderSendType = Column(String)
     OrderRefCode = Column(String)
-    Serial = Column(String, unique=True)
-    SellPrice = Column(String)
+    Serial = Column(String, ForeignKey('Products.Serial'))
+    SellPrice = Column(Integer)
     ProductCode = Column(String)
+    product: Mapped["Product"] = relationship("Product", back_populates="log")
+
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind = engine)
 session = Session()

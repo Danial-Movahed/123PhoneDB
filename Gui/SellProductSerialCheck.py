@@ -10,6 +10,7 @@ class SellProductSerialCheck(ui_SellProductSerialCheck.Ui_MainWindow, QMainWindo
         self.SearchSerial()
         self.SearchBtn.clicked.connect(lambda: self.SearchSerial())
         self.NextBtn.clicked.connect(lambda: self.Next())
+        self.CancelBtn.clicked.connect(self.close)
         self.show()
 
     def ShowInfo(self):

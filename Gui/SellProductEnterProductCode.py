@@ -7,6 +7,7 @@ class SellProductEnterProductCode(ui_SellProductEnterProductCode.Ui_Dialog, QDia
         self.setupUi(self)
         self.state = False
         self.NextBtn.clicked.connect(self.StateCheck)
+        self.CancelBtn.clicked.connect(self.close)
         self.show()
 
     def StateCheck(self):
