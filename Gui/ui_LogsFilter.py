@@ -35,7 +35,8 @@ class Ui_MainWindow(object):
         self.label_18.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_18.setStyleSheet("background-color: rgb(0, 0, 255);\n"
 "border-radius: 20px;\n"
-"padding: 20px;")
+"padding: 20px;\n"
+"color: rgb(255,255,255);")
         self.label_18.setAlignment(QtCore.Qt.AlignCenter)
         self.label_18.setObjectName("label_18")
         self.verticalLayout_14.addWidget(self.label_18)
@@ -734,14 +735,15 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.SearchBtn.setFont(font)
         self.SearchBtn.setStyleSheet("border-radius: 10px;\n"
-"background-color: rgb(0, 20, 140);")
+"background-color: rgb(0, 20, 140);\n"
+"color: rgb(255,255,255);")
         self.SearchBtn.setObjectName("SearchBtn")
         self.verticalLayout_23.addWidget(self.SearchBtn)
         self.horizontalLayout_12.addLayout(self.verticalLayout_23)
         self.verticalLayout_14.addLayout(self.horizontalLayout_12)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 34))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1112, 30))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

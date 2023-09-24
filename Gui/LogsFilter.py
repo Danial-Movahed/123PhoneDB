@@ -201,17 +201,24 @@ class LogsFilter(ui_LogsFilter.Ui_MainWindow, QMainWindow):
                 else:
                     tmp.setCheckState(Qt.Unchecked)
                 self.ShowTable.setItem(rowPosition, 13, tmp)
-
-                if len(x.log) > 0:
+                currentLog = None
+                if x.log == None:
+                    continue
+                if type(x.log) == InstrumentedList:
+                    if len(x.log) == 0:
+                        continue
                     currentLog = x.log[0]
-                    self.ShowTable.setItem(rowPosition, 14, QTableWidgetItem(currentLog.OrderCode))
-                    jDate = JalaliDate(currentLog.OrderDate)
-                    self.ShowTable.setItem(rowPosition, 15, QTableWidgetItem(f"{jDate.year}/{jDate.month}/{jDate.day}"))
-                    self.ShowTable.setItem(rowPosition, 16, QTableWidgetItem(currentLog.OrdererName))
-                    self.ShowTable.setItem(rowPosition, 17, QTableWidgetItem(currentLog.OrdererNationalCode))
-                    self.ShowTable.setItem(rowPosition, 18, QTableWidgetItem(currentLog.OrderSendType))
-                    self.ShowTable.setItem(rowPosition, 19, QTableWidgetItem(currentLog.OrderRefCode))
-                    self.ShowTable.setItem(rowPosition, 20, QTableWidgetItem(str(currentLog.SellPrice)))
+                else:
+                    currentLog = x.log
+                self.ShowTable.setItem(rowPosition, 14, QTableWidgetItem(currentLog.OrderCode))
+                jDate = JalaliDate(currentLog.OrderDate)
+                self.ShowTable.setItem(rowPosition, 15, QTableWidgetItem(f"{jDate.year}/{jDate.month}/{jDate.day}"))
+                self.ShowTable.setItem(rowPosition, 16, QTableWidgetItem(currentLog.OrdererName))
+                self.ShowTable.setItem(rowPosition, 17, QTableWidgetItem(currentLog.OrdererNationalCode))
+                self.ShowTable.setItem(rowPosition, 18, QTableWidgetItem(currentLog.OrderSendType))
+                self.ShowTable.setItem(rowPosition, 19, QTableWidgetItem(currentLog.OrderRefCode))
+                self.ShowTable.setItem(rowPosition, 20, QTableWidgetItem(str(currentLog.SellPrice)))
+                
         except ValueError:
             errDlg = ErrorDialog("لطفا تاریخ را درست وارد کنید!")
             errDlg.show()

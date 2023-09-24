@@ -42,7 +42,6 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             self.ProductWarrantyCompanyEdit.text().strip() != "" and
             self.ProductWarrantyTimeSpin.text().strip() != ""    and
             self.ProductSerialEdit.text().strip() != ""          and
-            self.ProductBuyPriceEdit.text().strip() != ""        and
             self.ProductCodeEdit.text().strip() != ""
             ):
             return True
@@ -54,12 +53,13 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
             self.dlg.show()
             return
         price = 0
-        try:
-            price = int(self.ProductBuyPriceEdit.text().strip())
-        except:
-            self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
-            self.dlg.show()
-            return 
+        if self.ProductBuyPriceEdit.text().strip() != "":
+            try:
+                price = int(self.ProductBuyPriceEdit.text().strip())
+            except:
+                self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
+                self.dlg.show()
+                return 
         session.add(Product(
             BuyFactorCode = self.BuyFactorCodeEdit.text().strip(),
             BuyFactorDate = JalaliDate(self.BuyFactorDateYearSpin.value(),self.BuyFactorDateMonthSpin.value(),self.BuyFactorDateDaySpin.value()).to_gregorian(),

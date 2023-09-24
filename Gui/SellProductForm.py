@@ -51,14 +51,9 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             self.OrderDateYearSpin.text().strip()  != "" and
             self.OrderDateMonthSpin.text().strip()  != "" and
             self.OrderDateDaySpin.text().strip()  != "" and
-            self.OrdererNameEdit.text().strip()  != "" and
-            self.OrdererNationalCodeEdit.text().strip()  != "" and
             self.OrderSendTypeEdit.text().strip()  != "" and
-            self.OrderRefCodeEdit.text().strip()  != "" and
-            self.ProductSerialEdit.text().strip()  != "" and
-            self.ProductSellPriceEdit.text().strip()  != "" and
-            self.ProductCodeEdit.text().strip()  != ""
-            ):
+            self.OrderRefCodeEdit.text().strip()  != ""
+           ):
             return True
         return False
 
@@ -68,12 +63,13 @@ class SellProductForm(ui_SellProductForm.Ui_MainWindow, QMainWindow):
             self.dlg.show()
             return
         price = 0
-        try:
-            price = int(self.ProductSellPriceEdit.text().strip())
-        except:
-            self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
-            self.dlg.show()
-            return
+        if self.ProductSellPriceEdit.text().strip() != "":
+            try:
+                price = int(self.ProductSellPriceEdit.text().strip())
+            except:
+                self.dlg = ErrorDialog("لطفا قیمت را به صورت عدد وارد کنید!", self)
+                self.dlg.show()
+                return
         session.add(Log(
             OrderCode = self.OrderCodeEdit.text().strip(),
             OrderDate = JalaliDate(self.OrderDateYearSpin.value(),self.OrderDateMonthSpin.value(),self.OrderDateDaySpin.value()).to_gregorian(),

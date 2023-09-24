@@ -4,6 +4,7 @@ from sqlite3 import Date
 from sqlalchemy import Column, Boolean, String, create_engine, Integer, Date, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, Mapped
+from sqlalchemy.orm.collections import InstrumentedList
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
