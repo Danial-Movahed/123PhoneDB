@@ -80,6 +80,9 @@ class NewProductForm(ui_NewProductForm.Ui_MainWindow, QMainWindow):
         self.close()
 
     def SetProductCode(self):
+        if self.InsertQuery.ProductCode != "":
+            self.ProductCodeEdit.setText(self.InsertQuery.ProductCode)
+            return
         for x in session.query(Product.Code.distinct()).filter(
             (Product.Type == self.InsertQuery.Type),
             (Product.Brand == self.InsertQuery.Brand),

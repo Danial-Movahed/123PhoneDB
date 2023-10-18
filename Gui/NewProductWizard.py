@@ -10,6 +10,7 @@ class InsertQuery():
         self.Country = None
         self.Color = None
         self.WarrantyCompany = None
+        self.ProductCode = None
     
     def save(self):
         return InsertQueryMemento(self)
@@ -22,6 +23,7 @@ class InsertQuery():
         self.Country = insertMem.Country
         self.Color = insertMem.Color
         self.WarrantyCompany = insertMem.WarrantyCompany
+        self.ProductCode = insertMem.ProductCode
 
 class InsertQueryCareTaker():
     def __init__(self, insertQuery: InsertQuery) -> None:
@@ -74,12 +76,18 @@ class InsertQueryMemento():
         self.Country = state.Country
         self.Color = state.Color
         self.WarrantyCompany = state.WarrantyCompany
+        self.ProductCode = state.ProductCode
 
 class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
-    def __init__(self) -> None:
+    def __init__(self, productCode) -> None:
         super().__init__()
         self.InsertQuery = InsertQuery()
         self.QueryCareTaker = InsertQueryCareTaker(self.InsertQuery)
+        if productCode != "":
+            self.InsertQuery.ProductCode = productCode
+            self.FillIQProductCode()
+            self.OpenForm()
+            return
         self.currentListWidget = None
         self.setupUi(self)
         # Next and back buttons
@@ -88,6 +96,16 @@ class NewProductWizard(ui_NewProductWizard.Ui_MainWindow, QMainWindow):
         self.ConnectBtns()
         self.show()
     
+    def FillIQProductCode(self):
+        for x in session.query(Product).filter(Product.Code == self.InsertQuery.ProductCode):
+            self.InsertQuery.Type = x.Type
+            self.InsertQuery.Brand = x.Brand
+            self.InsertQuery.Model = x.Model
+            self.InsertQuery.StorageRam = x.StorageRam
+            self.InsertQuery.Country = x.Country
+            self.InsertQuery.Color = x.Color
+            self.InsertQuery.WarrantyCompany = x.WarrantyCompany
+
     def ConnectBtns(self):
         self.NextBtn.clicked.connect(lambda: self.NextPage())
         self.BackBtn.clicked.connect(lambda: self.LastPage())
